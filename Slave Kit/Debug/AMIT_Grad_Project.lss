@@ -1,0 +1,448 @@
+
+AMIT_Grad_Project.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001e6  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000016  00800060  000001e6  0000025a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .stab         00000750  00000000  00000000  00000270  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      000000e7  00000000  00000000  000009c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 000000c0  00000000  00000000  00000aa8  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000005eb  00000000  00000000  00000b68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000001ea  00000000  00000000  00001153  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000469  00000000  00000000  0000133d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000dc  00000000  00000000  000017a8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000001ce  00000000  00000000  00001884  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000009a  00000000  00000000  00001a52  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000020  00000000  00000000  00001aec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 ee       	ldi	r30, 0xE6	; 230
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a6 37       	cpi	r26, 0x76	; 118
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a6 e7       	ldi	r26, 0x76	; 118
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a6 37       	cpi	r26, 0x76	; 118
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 f1 00 	jmp	0x1e2	; 0x1e2 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+#include <avr/io.h>
+#include "board.h"
+#include "spi.h"
+
+int main(void)
+{
+  92:	cf 93       	push	r28
+  94:	df 93       	push	r29
+  96:	cd b7       	in	r28, 0x3d	; 61
+  98:	de b7       	in	r29, 0x3e	; 62
+  9a:	2a 97       	sbiw	r28, 0x0a	; 10
+  9c:	0f b6       	in	r0, 0x3f	; 63
+  9e:	f8 94       	cli
+  a0:	de bf       	out	0x3e, r29	; 62
+  a2:	0f be       	out	0x3f, r0	; 63
+  a4:	cd bf       	out	0x3d, r28	; 61
+	SPI_Init(MODE_SLAVE);
+  a6:	81 e0       	ldi	r24, 0x01	; 1
+  a8:	0e 94 d0 00 	call	0x1a0	; 0x1a0 <SPI_Init>
+	BLUE_led_Init();
+  ac:	0e 94 cc 00 	call	0x198	; 0x198 <BLUE_led_Init>
+	RED_led_Init();
+  b0:	0e 94 c6 00 	call	0x18c	; 0x18c <RED_led_Init>
+	INT8U* RED_ON="red1";
+	INT8U* Red_OFF="red0";
+	
+	while(1)
+	{
+		for(i=0;Command[i]!=0;i++)
+  b4:	10 e0       	ldi	r17, 0x00	; 0
+		{
+			SPI_Tranceive(Command[i]);
+		}
+		if(!strcmp(Blue_ON,Command))
+  b6:	0f 2e       	mov	r0, r31
+  b8:	f0 e6       	ldi	r31, 0x60	; 96
+  ba:	ef 2e       	mov	r14, r31
+  bc:	f0 e0       	ldi	r31, 0x00	; 0
+  be:	ff 2e       	mov	r15, r31
+  c0:	f0 2d       	mov	r31, r0
+		{
+			BLUE_led_On();
+		}
+		else if(!strcmp(Blue_OFF,Command))
+  c2:	0f 2e       	mov	r0, r31
+  c4:	f6 e6       	ldi	r31, 0x66	; 102
+  c6:	cf 2e       	mov	r12, r31
+  c8:	f0 e0       	ldi	r31, 0x00	; 0
+  ca:	df 2e       	mov	r13, r31
+  cc:	f0 2d       	mov	r31, r0
+		{
+			BLUE_led_Off();
+		}
+		else if(!strcmp(RED_ON,Command))
+  ce:	0f 2e       	mov	r0, r31
+  d0:	fc e6       	ldi	r31, 0x6C	; 108
+  d2:	af 2e       	mov	r10, r31
+  d4:	f0 e0       	ldi	r31, 0x00	; 0
+  d6:	bf 2e       	mov	r11, r31
+  d8:	f0 2d       	mov	r31, r0
+		{
+			RED_led_On();
+		}
+		else if(!strcmp(Red_OFF,Command))
+  da:	0f 2e       	mov	r0, r31
+  dc:	f1 e7       	ldi	r31, 0x71	; 113
+  de:	8f 2e       	mov	r8, r31
+  e0:	f0 e0       	ldi	r31, 0x00	; 0
+  e2:	9f 2e       	mov	r9, r31
+  e4:	f0 2d       	mov	r31, r0
+	INT8U* RED_ON="red1";
+	INT8U* Red_OFF="red0";
+	
+	while(1)
+	{
+		for(i=0;Command[i]!=0;i++)
+  e6:	00 e0       	ldi	r16, 0x00	; 0
+  e8:	05 c0       	rjmp	.+10     	; 0xf4 <main+0x62>
+		{
+			SPI_Tranceive(Command[i]);
+  ea:	0e 94 e3 00 	call	0x1c6	; 0x1c6 <SPI_Tranceive>
+	INT8U* RED_ON="red1";
+	INT8U* Red_OFF="red0";
+	
+	while(1)
+	{
+		for(i=0;Command[i]!=0;i++)
+  ee:	1f 5f       	subi	r17, 0xFF	; 255
+  f0:	01 c0       	rjmp	.+2      	; 0xf4 <main+0x62>
+  f2:	10 2f       	mov	r17, r16
+  f4:	e1 e0       	ldi	r30, 0x01	; 1
+  f6:	f0 e0       	ldi	r31, 0x00	; 0
+  f8:	ec 0f       	add	r30, r28
+  fa:	fd 1f       	adc	r31, r29
+  fc:	e1 0f       	add	r30, r17
+  fe:	f1 1d       	adc	r31, r1
+ 100:	80 81       	ld	r24, Z
+ 102:	88 23       	and	r24, r24
+ 104:	91 f7       	brne	.-28     	; 0xea <main+0x58>
+		{
+			SPI_Tranceive(Command[i]);
+		}
+		if(!strcmp(Blue_ON,Command))
+ 106:	c7 01       	movw	r24, r14
+ 108:	be 01       	movw	r22, r28
+ 10a:	6f 5f       	subi	r22, 0xFF	; 255
+ 10c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 10e:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <strcmp>
+ 112:	28 2f       	mov	r18, r24
+ 114:	39 2f       	mov	r19, r25
+ 116:	21 15       	cp	r18, r1
+ 118:	31 05       	cpc	r19, r1
+ 11a:	21 f4       	brne	.+8      	; 0x124 <main+0x92>
+		{
+			BLUE_led_On();
+ 11c:	0e 94 c0 00 	call	0x180	; 0x180 <BLUE_led_On>
+	INT8U* RED_ON="red1";
+	INT8U* Red_OFF="red0";
+	
+	while(1)
+	{
+		for(i=0;Command[i]!=0;i++)
+ 120:	10 2f       	mov	r17, r16
+ 122:	e8 cf       	rjmp	.-48     	; 0xf4 <main+0x62>
+		}
+		if(!strcmp(Blue_ON,Command))
+		{
+			BLUE_led_On();
+		}
+		else if(!strcmp(Blue_OFF,Command))
+ 124:	c6 01       	movw	r24, r12
+ 126:	be 01       	movw	r22, r28
+ 128:	6f 5f       	subi	r22, 0xFF	; 255
+ 12a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 12c:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <strcmp>
+ 130:	28 2f       	mov	r18, r24
+ 132:	39 2f       	mov	r19, r25
+ 134:	21 15       	cp	r18, r1
+ 136:	31 05       	cpc	r19, r1
+ 138:	21 f4       	brne	.+8      	; 0x142 <main+0xb0>
+		{
+			BLUE_led_Off();
+ 13a:	0e 94 ca 00 	call	0x194	; 0x194 <BLUE_led_Off>
+	INT8U* RED_ON="red1";
+	INT8U* Red_OFF="red0";
+	
+	while(1)
+	{
+		for(i=0;Command[i]!=0;i++)
+ 13e:	10 2f       	mov	r17, r16
+ 140:	d9 cf       	rjmp	.-78     	; 0xf4 <main+0x62>
+		}
+		else if(!strcmp(Blue_OFF,Command))
+		{
+			BLUE_led_Off();
+		}
+		else if(!strcmp(RED_ON,Command))
+ 142:	c5 01       	movw	r24, r10
+ 144:	be 01       	movw	r22, r28
+ 146:	6f 5f       	subi	r22, 0xFF	; 255
+ 148:	7f 4f       	sbci	r23, 0xFF	; 255
+ 14a:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <strcmp>
+ 14e:	28 2f       	mov	r18, r24
+ 150:	39 2f       	mov	r19, r25
+ 152:	21 15       	cp	r18, r1
+ 154:	31 05       	cpc	r19, r1
+ 156:	21 f4       	brne	.+8      	; 0x160 <main+0xce>
+		{
+			RED_led_On();
+ 158:	0e 94 c2 00 	call	0x184	; 0x184 <RED_led_On>
+	INT8U* RED_ON="red1";
+	INT8U* Red_OFF="red0";
+	
+	while(1)
+	{
+		for(i=0;Command[i]!=0;i++)
+ 15c:	10 2f       	mov	r17, r16
+ 15e:	ca cf       	rjmp	.-108    	; 0xf4 <main+0x62>
+		}
+		else if(!strcmp(RED_ON,Command))
+		{
+			RED_led_On();
+		}
+		else if(!strcmp(Red_OFF,Command))
+ 160:	c4 01       	movw	r24, r8
+ 162:	be 01       	movw	r22, r28
+ 164:	6f 5f       	subi	r22, 0xFF	; 255
+ 166:	7f 4f       	sbci	r23, 0xFF	; 255
+ 168:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <strcmp>
+ 16c:	28 2f       	mov	r18, r24
+ 16e:	39 2f       	mov	r19, r25
+ 170:	21 15       	cp	r18, r1
+ 172:	31 05       	cpc	r19, r1
+ 174:	09 f0       	breq	.+2      	; 0x178 <main+0xe6>
+ 176:	bd cf       	rjmp	.-134    	; 0xf2 <main+0x60>
+		{
+			RED_led_On();
+ 178:	0e 94 c2 00 	call	0x184	; 0x184 <RED_led_On>
+	INT8U* RED_ON="red1";
+	INT8U* Red_OFF="red0";
+	
+	while(1)
+	{
+		for(i=0;Command[i]!=0;i++)
+ 17c:	10 2f       	mov	r17, r16
+ 17e:	ba cf       	rjmp	.-140    	; 0xf4 <main+0x62>
+
+00000180 <BLUE_led_On>:
+void RED_led_Init(void){
+	setBit(LED_DDR,RED_LED);
+	RED_led_Off();
+}
+void BLUE_led_On(void){
+	setBit(LED_Port,BLUE_LED);
+ 180:	95 9a       	sbi	0x12, 5	; 18
+}
+ 182:	08 95       	ret
+
+00000184 <RED_led_On>:
+void RED_led_On(void){
+	setBit(LED_Port,RED_LED);
+ 184:	96 9a       	sbi	0x12, 6	; 18
+}
+ 186:	08 95       	ret
+
+00000188 <RED_led_Off>:
+void RED_led_Off(void){
+	clearBit(LED_Port,RED_LED);
+ 188:	96 98       	cbi	0x12, 6	; 18
+}
+ 18a:	08 95       	ret
+
+0000018c <RED_led_Init>:
+	setBit(LED_DDR,BLUE_LED);
+	BLUE_led_Off();
+}
+
+void RED_led_Init(void){
+	setBit(LED_DDR,RED_LED);
+ 18c:	8e 9a       	sbi	0x11, 6	; 17
+	RED_led_Off();
+ 18e:	0e 94 c4 00 	call	0x188	; 0x188 <RED_led_Off>
+}
+ 192:	08 95       	ret
+
+00000194 <BLUE_led_Off>:
+}
+void RED_led_Off(void){
+	clearBit(LED_Port,RED_LED);
+}
+void BLUE_led_Off(void){
+	clearBit(LED_Port,BLUE_LED);
+ 194:	95 98       	cbi	0x12, 5	; 18
+}
+ 196:	08 95       	ret
+
+00000198 <BLUE_led_Init>:
+*  Author: mnaguib
+*/
+#include "board.h"
+
+void BLUE_led_Init(void){
+	setBit(LED_DDR,BLUE_LED);
+ 198:	8d 9a       	sbi	0x11, 5	; 17
+	BLUE_led_Off();
+ 19a:	0e 94 ca 00 	call	0x194	; 0x194 <BLUE_led_Off>
+}
+ 19e:	08 95       	ret
+
+000001a0 <SPI_Init>:
+*  Author: mnaguib
+*/
+#include "spi.h"
+
+void SPI_Init(SPI_Mode spimode){
+	switch(spimode){
+ 1a0:	88 23       	and	r24, r24
+ 1a2:	19 f0       	breq	.+6      	; 0x1aa <SPI_Init+0xa>
+ 1a4:	81 30       	cpi	r24, 0x01	; 1
+ 1a6:	69 f4       	brne	.+26     	; 0x1c2 <SPI_Init+0x22>
+ 1a8:	07 c0       	rjmp	.+14     	; 0x1b8 <SPI_Init+0x18>
+		case MODE_MASTER:
+		/*OUTPUT PINS*/
+		setBit(SPI_DDR,SPI_MOSI);
+ 1aa:	ba 9a       	sbi	0x17, 2	; 23
+		setBit(SPI_DDR,SPI_SCK);
+ 1ac:	b9 9a       	sbi	0x17, 1	; 23
+		setBit(SPI_DDR,SPI_SS);
+ 1ae:	b8 9a       	sbi	0x17, 0	; 23
+		/*unselect slave*/
+		setBit(SPI_PORT,SPI_SS);
+ 1b0:	c0 9a       	sbi	0x18, 0	; 24
+		/*INPUT PINS*/
+		clearBit(SPI_DDR,SPI_MISO);
+ 1b2:	bb 98       	cbi	0x17, 3	; 23
+		/*MASTER MODE Select*/
+		setBit(SPCR,MSTR);
+ 1b4:	6c 9a       	sbi	0x0d, 4	; 13
+		break;
+ 1b6:	05 c0       	rjmp	.+10     	; 0x1c2 <SPI_Init+0x22>
+		case MODE_SLAVE:
+		/*OUTPUT PINS*/
+		setBit(SPI_DDR,SPI_MISO);
+ 1b8:	bb 9a       	sbi	0x17, 3	; 23
+		/*INPUT PINS*/
+		clearBit(SPI_DDR,SPI_MOSI);
+ 1ba:	ba 98       	cbi	0x17, 2	; 23
+		clearBit(SPI_DDR,SPI_SCK);
+ 1bc:	b9 98       	cbi	0x17, 1	; 23
+		clearBit(SPI_DDR,SPI_SS);
+ 1be:	b8 98       	cbi	0x17, 0	; 23
+		/*SLAVE MODE Select*/
+		clearBit(SPCR,MSTR);
+ 1c0:	6c 98       	cbi	0x0d, 4	; 13
+		break;
+	}
+	/*Enable SPI*/
+	setBit(SPCR,SPE);
+ 1c2:	6e 9a       	sbi	0x0d, 6	; 13
+}
+ 1c4:	08 95       	ret
+
+000001c6 <SPI_Tranceive>:
+INT8U SPI_Tranceive(INT8U u8Data){
+	/*UPLOAD DR*/
+	SPDR=u8Data;/*Shift Started*/
+ 1c6:	8f b9       	out	0x0f, r24	; 15
+	/*WAIT FOR SHIFT COMPLETE FLAG*/
+	while(!(SPSR&(1<<SPIF)));
+ 1c8:	77 9b       	sbis	0x0e, 7	; 14
+ 1ca:	fe cf       	rjmp	.-4      	; 0x1c8 <SPI_Tranceive+0x2>
+	/*RETURN DR*/
+	return SPDR;
+ 1cc:	8f b1       	in	r24, 0x0f	; 15
+ 1ce:	08 95       	ret
+
+000001d0 <strcmp>:
+ 1d0:	fb 01       	movw	r30, r22
+ 1d2:	dc 01       	movw	r26, r24
+ 1d4:	8d 91       	ld	r24, X+
+ 1d6:	01 90       	ld	r0, Z+
+ 1d8:	80 19       	sub	r24, r0
+ 1da:	01 10       	cpse	r0, r1
+ 1dc:	d9 f3       	breq	.-10     	; 0x1d4 <strcmp+0x4>
+ 1de:	99 0b       	sbc	r25, r25
+ 1e0:	08 95       	ret
+
+000001e2 <_exit>:
+ 1e2:	f8 94       	cli
+
+000001e4 <__stop_program>:
+ 1e4:	ff cf       	rjmp	.-2      	; 0x1e4 <__stop_program>
